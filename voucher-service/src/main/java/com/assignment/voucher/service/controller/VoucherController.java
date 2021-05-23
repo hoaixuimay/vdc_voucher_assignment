@@ -16,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.*;
 import java.util.concurrent.*;
 
@@ -38,8 +39,10 @@ class VoucherController {
         this.voucherRepository= voucherRepository;
     }
 
+    @RolesAllowed("user")
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<VoucherDto>> getVouchers(@RequestParam(name="phoneNumber") String phoneNumber) {
+    public ResponseEntity<List<VoucherDto>> getVouchers(@RequestParam(name="phoneNumber") String phoneNumber,
+                                                        @RequestHeader String Authorization) {
         List<Voucher> result = voucherRepository.findByPhoneNumber(phoneNumber);
         return ResponseEntity.ok(voucherMapper.entitiesToDtos(result));
     }
