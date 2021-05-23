@@ -3,11 +3,12 @@ package com.assignment.voucher.service.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "customer")
+@Table(name = "voucher")
 public class Voucher {
 
     @Id
     @GeneratedValue
+    @Column(name = "id")
     private long id;
 
     @Column(name = "phone_number", nullable = false)
