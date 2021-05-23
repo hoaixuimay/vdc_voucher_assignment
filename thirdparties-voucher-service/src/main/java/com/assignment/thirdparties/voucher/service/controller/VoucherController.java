@@ -1,7 +1,6 @@
 package com.assignment.thirdparties.voucher.service.controller;
 
 import com.assignment.thirdparties.voucher.service.model.Voucher;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Random;
 
 @RestController
-@RequestMapping(path = "/voucher")
+@RequestMapping(path = "/api/3rd/voucher")
 class VoucherController {
 
     @GetMapping(produces = "application/json")
@@ -22,7 +21,6 @@ class VoucherController {
         }
         String voucherCode = generateNumbers(15, 0, 9);
         Voucher voucher = new Voucher(voucherCode);
-        LoggerFactory.getLogger(VoucherController.class).error("sleep2");
         return ResponseEntity.ok(voucher);
     }
 
