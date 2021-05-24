@@ -30,19 +30,17 @@ import org.springframework.web.client.RestTemplate;
 
 @Service
 public class VoucherService {
-    private VoucherRepository voucherRepository;
     private VoucherMapper voucherMapper = Mappers.getMapper(VoucherMapper.class);
     private RestTemplate restTemplate;
-
     private Set<String> willSendSMSMessageConcurrentSet = ConcurrentHashMap.newKeySet();
-
-    @Autowired
+    private VoucherRepository voucherRepository;
     private Environment env;
 
     @Autowired
-    public VoucherService(RestTemplateBuilder restTemplateBuilder, VoucherRepository voucherRepository){
+    public VoucherService(VoucherRepository voucherRepository, RestTemplateBuilder restTemplateBuilder, Environment env){
         this.restTemplate=restTemplateBuilder.build();
-        this.voucherRepository= voucherRepository;
+        this.voucherRepository = voucherRepository;
+        this.env = env;
     }
 
     /**
@@ -50,9 +48,9 @@ public class VoucherService {
      * @param phoneNumber phone number
      * @return list of voucher
      */
-    public ResponseEntity<List<VoucherDto>> getVouchers(String phoneNumber) {
+    public List<VoucherDto> getVouchers(String phoneNumber) {
         List<Voucher> result = voucherRepository.findByPhoneNumber(phoneNumber);
-        return ResponseEntity.ok(voucherMapper.entitiesToDtos(result));
+        return voucherMapper.entitiesToDtos(result);
     }
 
     /**

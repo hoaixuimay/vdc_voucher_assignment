@@ -23,7 +23,8 @@ class VoucherController {
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<VoucherDto>> getVouchers(@RequestParam(name="phoneNumber") String phoneNumber,
                                                         @RequestHeader String Authorization) {
-        return voucherService.getVouchers(phoneNumber);
+        List<VoucherDto> result =  voucherService.getVouchers(phoneNumber);
+        return ResponseEntity.ok(result);
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
