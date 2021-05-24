@@ -2,7 +2,6 @@ package com.assignment.thirdparties.voucher.service.controller;
 
 import com.assignment.thirdparties.voucher.service.model.Voucher;
 import com.assignment.thirdparties.voucher.service.service.VoucherService;
-import com.assignment.thirdparties.voucher.service.util.VoucherGeneratorUtil;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
