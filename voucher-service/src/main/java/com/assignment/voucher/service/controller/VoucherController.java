@@ -28,7 +28,7 @@ class VoucherController {
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public CompletableFuture<Object> buyVoucher(@RequestBody VoucherRequest voucherRequest){
-        return voucherService.buyVoucher(voucherRequest);
+    public ResponseEntity<Object> buyVoucher(@RequestBody VoucherRequest voucherRequest) throws ExecutionException, InterruptedException {
+        return ResponseEntity.ok(voucherService.buyVoucher(voucherRequest));
     }
 }
