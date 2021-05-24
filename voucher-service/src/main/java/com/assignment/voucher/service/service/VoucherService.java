@@ -68,7 +68,6 @@ public class VoucherService {
                 throw new IllegalStateException(e);
             }
             willSendSMSMessageConcurrentSet.add(promiseSendSmsMessageId);
-            VoucherDto dto = new VoucherDto();
             return ResponseEntity.ok(new VoucherWaitResponse("The request is " +
                     "being processed within 30 seconds. You will receive a sms message when finish"));
         });
