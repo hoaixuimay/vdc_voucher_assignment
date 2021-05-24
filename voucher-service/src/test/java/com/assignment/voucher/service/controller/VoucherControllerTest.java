@@ -3,12 +3,14 @@ package com.assignment.voucher.service.controller;
 import com.assignment.voucher.service.dto.VoucherDto;
 import com.assignment.voucher.service.dto.VoucherRequest;
 import com.assignment.voucher.service.service.VoucherService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.http.HttpHeaders;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -34,7 +36,30 @@ public class VoucherControllerTest {
     private final String MOCK_VOUCHER_CODE = "123456789012345";
 
     @Test
-    public void greetingShouldReturnMessageFromService() throws Exception {
+    public void buyVoucher_whenReturnVoucher_thenVoucherOutput() throws Exception {
+        String mockVoucherCode = "123456789123456";
+        VoucherRequest request = new VoucherRequest();
+        request.setPhoneNumber(MOCK_PHONE_NUMBER);
+        request.setDelayInSeconds(0);
+        CompletableFuture<Object> mockFuture = new CompletableFuture<Object>();
+        VoucherDto dto = new VoucherDto();
+        dto.setVoucherCode(MOCK_VOUCHER_CODE);
+        mockFuture.complete(ResponseEntity.ok(dto));
+
+        Mockito.when(service.buyVoucher(request)).thenReturn(mockFuture);
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        this.mockMvc.perform(post("/api/vouchers")
+                    .header(HttpHeaders.AUTHORIZATION, "Bearer mockToken")
+                    .content(objectMapper.writeValueAsString(request))
+                    .contentType(MediaType.APPLICATION_JSON_VALUE)
+                )
+                .andDo(print()).andExpect(status().isOk())
+                .andExpect(content().string(containsString(MOCK_VOUCHER_CODE)));
+    }
+
+    @Test
+    public void buyVoucher_whenReturnMessage_thenMessageOutput() throws Exception {
         String mockVoucherCode = "123456789123456";
         VoucherRequest request = new VoucherRequest();
         request.setPhoneNumber(MOCK_PHONE_NUMBER);
