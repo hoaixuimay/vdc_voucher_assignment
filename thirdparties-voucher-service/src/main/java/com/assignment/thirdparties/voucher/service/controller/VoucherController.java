@@ -1,13 +1,12 @@
 package com.assignment.thirdparties.voucher.service.controller;
 
 import com.assignment.thirdparties.voucher.service.model.Voucher;
+import com.assignment.thirdparties.voucher.service.util.VoucherGeneratorUtil;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Random;
 
 @RestController
 @RequestMapping(path = "/api/3rd/voucher")
@@ -19,24 +18,8 @@ class VoucherController {
         if(delayInSeconds > 0) {
             java.util.concurrent.TimeUnit.SECONDS.sleep(delayInSeconds);
         }
-        String voucherCode = generateNumbers(15, 0, 9);
+        String voucherCode = VoucherGeneratorUtil.getInstance().generateNumbers(15);
         Voucher voucher = new Voucher(voucherCode);
         return ResponseEntity.ok(voucher);
-    }
-
-    /**
-     * Generate voucher code
-     * @param length length of code
-     * @param min min
-     * @param max max
-     * @return voucher code
-     */
-    private String generateNumbers(int length, int min, int max) {
-        Random random = new Random();
-        StringBuilder sb = new StringBuilder(length);
-        random.ints(length, min, max).forEach(i -> {
-            sb.append(i);
-        });
-        return sb.toString();
     }
 }
