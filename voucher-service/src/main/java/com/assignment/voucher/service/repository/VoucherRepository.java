@@ -1,6 +1,6 @@
 package com.assignment.voucher.service.repository;
 
-import com.assignment.voucher.service.entity.Voucher;
+import com.assignment.voucher.service.model.Voucher;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

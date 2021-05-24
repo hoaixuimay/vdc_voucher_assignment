@@ -1,4 +1,4 @@
-package com.assignment.voucher.service.entity;
+package com.assignment.voucher.service.model;
 
 import javax.persistence.*;
 

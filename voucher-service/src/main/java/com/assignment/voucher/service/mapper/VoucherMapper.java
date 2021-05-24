@@ -1,7 +1,7 @@
 package com.assignment.voucher.service.mapper;
 
 import com.assignment.voucher.service.dto.VoucherDto;
-import com.assignment.voucher.service.entity.Voucher;
+import com.assignment.voucher.service.model.Voucher;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
