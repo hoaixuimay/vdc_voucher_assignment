@@ -7,23 +7,18 @@ import com.assignment.voucher.service.model.Voucher;
 import com.assignment.voucher.service.repository.VoucherRepository;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.core.env.Environment;
-import org.springframework.http.MediaType;
-import org.springframework.test.web.client.MockRestServiceServer;
-import org.springframework.test.web.client.match.MockRestRequestMatchers;
-import org.springframework.test.web.client.response.MockRestResponseCreators;
+import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
@@ -40,11 +35,13 @@ public class VoucherServiceTest {
     @Mock private Environment env;
     @Mock private RestTemplate restTemplate;
 
-    @Autowired
-    private MockRestServiceServer mockRestServiceServer;
-
-    @InjectMocks
     private VoucherService voucherService;
+
+    @BeforeEach
+    void setUp() {
+        voucherService = new VoucherService(voucherRepository, restTemplateBuilder, env);
+        ReflectionTestUtils.setField(voucherService, "restTemplate", restTemplate);
+    }
 
     @Test
     public void getVouchers_whenEmptyData_thenReturnEmptyList() {
@@ -62,27 +59,36 @@ public class VoucherServiceTest {
         Assertions.assertEquals(MOCK_VOUCHER_CODE_TWO, result.get(1).getVoucherCode());
     }
 
-//    @Test
-//    public void buyVoucher_whenRunLong_thenReturnMessage() throws ExecutionException, InterruptedException {
-//        // Mock timeout to 1
-//
-//        Mockito.when(env.getProperty("requestTimeoutInSeconds")).thenReturn("1");
-//        Mockito.when(restTemplateBuilder.build()).thenReturn(restTemplate);
-//        Mockito.when(restTemplate.getForObject(Mockito.anyString(), Mockito.any(Class.class), Mockito.any(Map.class))).thenReturn(new VoucherDto());
-//        this.mockRestServiceServer
-//                .expect(MockRestRequestMatchers.requestTo("/api/3rd/voucher"))
-//                .andRespond(MockRestResponseCreators.withSuccess("{}", MediaType.APPLICATION_JSON));
-//
-//        VoucherRequest voucherRequest = new VoucherRequest();
-//        voucherRequest.setDelayInSeconds(2);
-//        voucherRequest.setPhoneNumber(MOCK_PHONE_NUMBER);
-//        Object result = voucherService.buyVoucher(voucherRequest);
-//        Assertions.assertTrue(result instanceof VoucherWaitResponse);
-//    }
+    @Test
+    public void buyVoucher_whenRunQuick_thenReturnVoucherCode() throws ExecutionException, InterruptedException {
+        Mockito.when(env.getProperty("requestTimeoutInSeconds")).thenReturn("1");
+        Mockito.when(env.getProperty("3rdApiUrl")).thenReturn("http://localhost:8080/api/3rd/voucher");
+        Mockito.when(env.getProperty("clientId")).thenReturn("mockClientId");
+        Mockito.lenient().when(restTemplateBuilder.build()).thenReturn(restTemplate);
+        VoucherDto dto = new VoucherDto();
+        dto.setVoucherCode(MOCK_VOUCHER_CODE);
+        Mockito.when(restTemplate.getForObject(Mockito.anyString(), Mockito.any(), Mockito.any(Map.class))).thenReturn(dto);
+
+        VoucherRequest voucherRequest = new VoucherRequest();
+        voucherRequest.setDelayInSeconds(2);
+        voucherRequest.setPhoneNumber(MOCK_PHONE_NUMBER);
+        Object result = voucherService.buyVoucher(voucherRequest);
+        Assertions.assertTrue(result instanceof VoucherDto);
+    }
 
     @Test
-    public void buyVoucher_whenRunQuick_thenReturnVoucherCode() {
+    public void buyVoucher_whenRunLong_thenReturnMessage() throws ExecutionException, InterruptedException {
+        Mockito.when(env.getProperty("requestTimeoutInSeconds")).thenReturn("0");
+        Mockito.lenient().when(restTemplateBuilder.build()).thenReturn(restTemplate);
+        VoucherDto dto = new VoucherDto();
+        dto.setVoucherCode(MOCK_VOUCHER_CODE);
+        Mockito.lenient().when(restTemplate.getForObject(Mockito.anyString(), Mockito.any(), Mockito.any(Map.class))).thenReturn(dto);
 
+        VoucherRequest voucherRequest = new VoucherRequest();
+        voucherRequest.setDelayInSeconds(2);
+        voucherRequest.setPhoneNumber(MOCK_PHONE_NUMBER);
+        Object result = voucherService.buyVoucher(voucherRequest);
+        Assertions.assertTrue(result instanceof VoucherWaitResponse);
     }
 
     private List<Voucher> mockListVoucherReturn() {
