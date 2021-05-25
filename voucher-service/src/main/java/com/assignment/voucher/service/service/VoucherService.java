@@ -1,7 +1,5 @@
 /*
  * VoucherService.java
- *
- * Copyright by Axon Ivy (Lucerne), all rights reserved.
  */
 package com.assignment.voucher.service.service;
 
