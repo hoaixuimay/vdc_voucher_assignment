@@ -1,0 +1,41 @@
+version: "3.9"
+
+services:
+  thirdparties-voucher-service:
+    build:
+      context: ./thirdparties-voucher-service/src/main/docker
+      dockerfile: Dockerfile
+    #ports:
+    #  - "8080:8080"
+
+  voucher-service:
+    build:
+      context: ./voucher-service/src/main/docker
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8080"
+
+  keycloak:
+    image: 'hoaixuimay/keycloak-added-rbac-example:13.0.0-added-rbac-example'
+    ports:
+      - "9080:8080"
+    environment:
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=admin
+      - DB_VENDOR=postgres
+      - DB_ADDR=postgres
+      - DB_DATABASE=keycloak
+
+  db-postgres:
+    image: 'postgres:13.1-alpine'
+    ports:
+      - "8432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=12345
+      - POSTGRES_DB=voucher
+    volumes:
+      - voucher-db:/var/lib/postgresql/data
+
+volumes:
+  voucher-db: {}
