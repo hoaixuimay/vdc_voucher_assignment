@@ -87,6 +87,7 @@ public class VoucherService {
         Object result = anyOfFuture.get();
         if(result instanceof VoucherWaitResponse) {
             future2.thenAcceptAsync(res -> {
+                // TODO: integrate with SMS message provider. e.g. Twilio
                 LoggerFactory.getLogger(VoucherService.class).info("[SMS Message] - Send sms message to phone number " + res.getVoucherCode());
             });
         }
