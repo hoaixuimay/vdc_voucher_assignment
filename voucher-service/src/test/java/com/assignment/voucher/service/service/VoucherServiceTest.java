@@ -3,21 +3,21 @@ package com.assignment.voucher.service.service;
 import com.assignment.voucher.service.dto.VoucherDto;
 import com.assignment.voucher.service.model.Voucher;
 import com.assignment.voucher.service.repository.VoucherRepository;
-import org.junit.Before;
 
-import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.core.env.Environment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class VoucherServiceTest {
 
     private final String MOCK_PHONE_NUMBER = "0382138482";
@@ -28,12 +28,8 @@ public class VoucherServiceTest {
     @Mock private RestTemplateBuilder restTemplateBuilder;
     @Mock private Environment env;
 
-    VoucherService voucherService;
-
-    @Before
-    public void setup() {
-        voucherService = new VoucherService(voucherRepository, restTemplateBuilder, env);
-    }
+    @InjectMocks
+    private VoucherService voucherService;
 
     @Test
     public void getVouchers_whenEmptyData_thenReturnEmptyList() {
