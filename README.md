@@ -36,9 +36,9 @@ Then use access token to call request to get vouchers by phone number. (Authoriz
 Note: this application designed that only **User** role has permission to get vouchers
 
 Example:
-User role:
+User role: can access resource
 ![](images/get_access_token_for_user.PNG) ![](images/then_get_voucher_by_user.PNG)
-Admin role: 
+Admin role: will receive a forbidden message
 ![](images/get_access_token_for_admin.PNG) ![](images/then_access_denied_for_admin.PNG)
 Person who has both User and Admin role:
 ![](images/get_access_token_for_person_both_role_admin_user.PNG) ![](images/then_get_voucher_by_both_user_or_admin_.PNG)
