@@ -27,8 +27,40 @@ Run build: `./mvnw clean package`
 
 Run thirdparties-voucher-service service: `java -jar ./target/thirdparties-voucher-service-0.0.1-SNAPSHOT.jar`
 
-##3. Test
+##3. Demo
+Import postman collection first to have request samples: open Postman app and import collection: ![Exercises.postman_collection.json](Exercises.postman_collection.json)
 
+###Get vouchers by phone number
+Get access token first
+Then use access token to call request to get vouchers by phone number. (Authorization: Bearer <access_token>)
+Note: this application designed that only **User** role has permission to get vouchers
+
+Example:
+User role:
+![](images/get_access_token_for_user.PNG) ![](images/then_get_voucher_by_user.PNG)
+Admin role: 
+![](images/get_access_token_for_admin.PNG) ![](images/then_access_denied_for_admin.PNG)
+Person who has both User and Admin role:
+![](images/get_access_token_for_person_both_role_admin_user.PNG) ![](images/then_get_voucher_by_both_user_or_admin_.PNG)
+
+###Buy a voucher
+Return a voucher code. But when process time is larger than 30s then user will receive a message response that long process. 
+And you will be received a SMS text message .
+
+**Limited: SMS text message is not implemented yet**
+
+Example:
+
+Return voucher code when process time is short.
+![](images/buy_voucher_in_1s.PNG)
+
+Return voucher code when process time is longer than 30s.
+Note that if process is running, when you get bought vouchers for this number. This buying voucher will not appear in result.
+This buying voucher will appear when process running finish. (Use getVoucher request to check when processing and when processed) 
+![](images/buy_voucher_in_60s_process_time.PNG)
 
 ##4. Coverage test result
 To see coverage test results, go to **<service_name>/target/site/jacoco/index.html**
+
+![](images/test_cover_voucher_service.PNG)
+![](images/test_cover_thirdparties-voucher_service.PNG)
