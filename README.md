@@ -43,6 +43,7 @@ And you will be received a SMS text message .
 
 
 **Return a waiting message when process time is longer than 30s.**
+
 Note that if process is running, when you get bought vouchers for this number. Then this buying voucher will not appear in result.
 This buying voucher will appear when process running finish. (Use getVouchers request to check when processing and when processed) 
 ![](images/buy_voucher_in_60s_process_time.PNG)
