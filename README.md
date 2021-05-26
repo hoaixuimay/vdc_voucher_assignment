@@ -8,7 +8,7 @@
 
 ## 2. Build and run application
 #### Keycloak and Postgres on docker containers
-Ports will be used: 8091 (Keycloak), 8432 (Postgres)
+Ports will be used: 9081 (Keycloak), 8432 (Postgres)
 
 Goto folder vdc_voucher_assignment:
 `docker-compose up`
