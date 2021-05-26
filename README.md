@@ -27,10 +27,10 @@ Run build: `./mvnw clean package`
 
 Run thirdparties-voucher-service service: `java -jar ./target/thirdparties-voucher-service-0.0.1-SNAPSHOT.jar`
 
-##3. Demo
+## 3. Demo
 Import postman collection first to have request samples: open Postman app and import collection: ![Exercises.postman_collection.json](Exercises.postman_collection.json)
 
-###Get vouchers by phone number
+### Get vouchers by phone number
 Get access token first
 Then use access token to call request to get vouchers by phone number. (Authorization: Bearer <access_token>)
 Note: this application designed that only **User** role has permission to get vouchers
@@ -43,7 +43,7 @@ Admin role:
 Person who has both User and Admin role:
 ![](images/get_access_token_for_person_both_role_admin_user.PNG) ![](images/then_get_voucher_by_both_user_or_admin_.PNG)
 
-###Buy a voucher
+### Buy a voucher
 Return a voucher code. But when process time is larger than 30s then user will receive a message response that long process. 
 And you will be received a SMS text message .
 
@@ -59,7 +59,7 @@ Note that if process is running, when you get bought vouchers for this number. T
 This buying voucher will appear when process running finish. (Use getVoucher request to check when processing and when processed) 
 ![](images/buy_voucher_in_60s_process_time.PNG)
 
-##4. Coverage test result
+## 4. Coverage test result
 To see coverage test results, go to **<service_name>/target/site/jacoco/index.html**
 
 ![](images/test_cover_voucher_service.PNG)
