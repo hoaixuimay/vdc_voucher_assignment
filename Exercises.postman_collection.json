@@ -1,0 +1,365 @@
+{
+	"info": {
+		"_postman_id": "b124b486-ac2a-49a3-a9df-252f0ff24fe7",
+		"name": "Exercises",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create voucher in 60s",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"phoneNumber\": \"0382138482\",\n    \"delayInSeconds\": 60\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/api/vouchers",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"vouchers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create voucher in 1s",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"phoneNumber\": \"0382138482\",\n    \"delayInSeconds\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/api/vouchers",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"vouchers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get voucher by User role",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJJTnIxV1hsZjY0SHhwc1d6V180TF9hR0F4ZllhRWFnZnA3V0VrTGQyUmFFIn0.eyJleHAiOjE2MjE3NTkzOTIsImlhdCI6MTYyMTc1OTA5MiwianRpIjoiYzRiNDk4N2QtOTM4Ny00NTk1LTg0NGQtOGQwM2U4ZjMyY2MzIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo5MDgwL2F1dGgvcmVhbG1zL0RlbW8tUmVhbG0iLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiMmY2MThiOTItMDU0Ni00ZjI3LWJjNjQtZDFlM2NmNzdlYzliIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoic3ByaW5nYm9vdC1taWNyb3NlcnZpY2UiLCJzZXNzaW9uX3N0YXRlIjoiZmU1OTYxYzktMWJmYi00YmIwLTk1MTgtOTc3NmM0MTljMmQzIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwOi8vbG9jYWxob3N0OjgwODEiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwiZGVmYXVsdC1yb2xlcy1kZW1vLXJlYWxtIiwidW1hX2F1dGhvcml6YXRpb24iLCJhcHAtdXNlciJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InNwcmluZ2Jvb3QtbWljcm9zZXJ2aWNlIjp7InJvbGVzIjpbInVzZXIiXX0sImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoicHJvZmlsZSBlbWFpbCIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJlbXBsb3llZTEifQ.hW0fuWidctXTecmZQ-bUkNL8QoTO0gOeY-JA1MZDv9szIiHuOK8REs-Q4VCua-xTWMmkS1i4NeU3Z8n9_fbJsUOx8AZO9zv2-X_l7XbgX4KRmbtCfvK5fW6obdjgtz0RTmOekLTxRHDKaYn9dOmhGhlT4J6HawSWsshCP3JKhzyvDtjvgRZOlrlsBmtNZXwujeAqdfVeaJ-kXbZZVDgEI82GClGVdyfZaQ0nnQvh10RlCaPdSfTKEaQl0gUoRW2AZn33RAeRiS0DBzrIRapFqwIPIMbvFn_RY5ESZzyEwK4R3vhItYZzRASncgJPRxc8YjMic8Sk_Tt55Ab-huwpaQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/api/vouchers?phoneNumber=0382138482",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"vouchers"
+					],
+					"query": [
+						{
+							"key": "phoneNumber",
+							"value": "0382138482"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get vouchers by Admin role",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJJTnIxV1hsZjY0SHhwc1d6V180TF9hR0F4ZllhRWFnZnA3V0VrTGQyUmFFIn0.eyJleHAiOjE2MjE3NTkzOTIsImlhdCI6MTYyMTc1OTA5MiwianRpIjoiYzRiNDk4N2QtOTM4Ny00NTk1LTg0NGQtOGQwM2U4ZjMyY2MzIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo5MDgwL2F1dGgvcmVhbG1zL0RlbW8tUmVhbG0iLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiMmY2MThiOTItMDU0Ni00ZjI3LWJjNjQtZDFlM2NmNzdlYzliIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoic3ByaW5nYm9vdC1taWNyb3NlcnZpY2UiLCJzZXNzaW9uX3N0YXRlIjoiZmU1OTYxYzktMWJmYi00YmIwLTk1MTgtOTc3NmM0MTljMmQzIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwOi8vbG9jYWxob3N0OjgwODEiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwiZGVmYXVsdC1yb2xlcy1kZW1vLXJlYWxtIiwidW1hX2F1dGhvcml6YXRpb24iLCJhcHAtdXNlciJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InNwcmluZ2Jvb3QtbWljcm9zZXJ2aWNlIjp7InJvbGVzIjpbInVzZXIiXX0sImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoicHJvZmlsZSBlbWFpbCIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJlbXBsb3llZTEifQ.hW0fuWidctXTecmZQ-bUkNL8QoTO0gOeY-JA1MZDv9szIiHuOK8REs-Q4VCua-xTWMmkS1i4NeU3Z8n9_fbJsUOx8AZO9zv2-X_l7XbgX4KRmbtCfvK5fW6obdjgtz0RTmOekLTxRHDKaYn9dOmhGhlT4J6HawSWsshCP3JKhzyvDtjvgRZOlrlsBmtNZXwujeAqdfVeaJ-kXbZZVDgEI82GClGVdyfZaQ0nnQvh10RlCaPdSfTKEaQl0gUoRW2AZn33RAeRiS0DBzrIRapFqwIPIMbvFn_RY5ESZzyEwK4R3vhItYZzRASncgJPRxc8YjMic8Sk_Tt55Ab-huwpaQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/api/vouchers?phoneNumber=0382138482",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"vouchers"
+					],
+					"query": [
+						{
+							"key": "phoneNumber",
+							"value": "0382138482"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get voucher by Person has both Admin and User role",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJJTnIxV1hsZjY0SHhwc1d6V180TF9hR0F4ZllhRWFnZnA3V0VrTGQyUmFFIn0.eyJleHAiOjE2MjE3NTkzOTIsImlhdCI6MTYyMTc1OTA5MiwianRpIjoiYzRiNDk4N2QtOTM4Ny00NTk1LTg0NGQtOGQwM2U4ZjMyY2MzIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo5MDgwL2F1dGgvcmVhbG1zL0RlbW8tUmVhbG0iLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiMmY2MThiOTItMDU0Ni00ZjI3LWJjNjQtZDFlM2NmNzdlYzliIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoic3ByaW5nYm9vdC1taWNyb3NlcnZpY2UiLCJzZXNzaW9uX3N0YXRlIjoiZmU1OTYxYzktMWJmYi00YmIwLTk1MTgtOTc3NmM0MTljMmQzIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwOi8vbG9jYWxob3N0OjgwODEiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwiZGVmYXVsdC1yb2xlcy1kZW1vLXJlYWxtIiwidW1hX2F1dGhvcml6YXRpb24iLCJhcHAtdXNlciJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InNwcmluZ2Jvb3QtbWljcm9zZXJ2aWNlIjp7InJvbGVzIjpbInVzZXIiXX0sImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoicHJvZmlsZSBlbWFpbCIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJlbXBsb3llZTEifQ.hW0fuWidctXTecmZQ-bUkNL8QoTO0gOeY-JA1MZDv9szIiHuOK8REs-Q4VCua-xTWMmkS1i4NeU3Z8n9_fbJsUOx8AZO9zv2-X_l7XbgX4KRmbtCfvK5fW6obdjgtz0RTmOekLTxRHDKaYn9dOmhGhlT4J6HawSWsshCP3JKhzyvDtjvgRZOlrlsBmtNZXwujeAqdfVeaJ-kXbZZVDgEI82GClGVdyfZaQ0nnQvh10RlCaPdSfTKEaQl0gUoRW2AZn33RAeRiS0DBzrIRapFqwIPIMbvFn_RY5ESZzyEwK4R3vhItYZzRASncgJPRxc8YjMic8Sk_Tt55Ab-huwpaQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/api/vouchers?phoneNumber=0382138482",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"vouchers"
+					],
+					"query": [
+						{
+							"key": "phoneNumber",
+							"value": "0382138482"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Keycloak get access token for User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "springboot-microservice",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "b510efb2-151a-4c4b-b95e-188ff03aa687",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "employee3",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "mypassword",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:9081/auth/realms/Demo-Realm/protocol/openid-connect/token",
+					"host": [
+						"localhost"
+					],
+					"port": "9081",
+					"path": [
+						"auth",
+						"realms",
+						"Demo-Realm",
+						"protocol",
+						"openid-connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Keycloak get access token for Admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "springboot-microservice",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "b510efb2-151a-4c4b-b95e-188ff03aa687",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "employee2",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "mypassword",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:9081/auth/realms/Demo-Realm/protocol/openid-connect/token",
+					"host": [
+						"localhost"
+					],
+					"port": "9081",
+					"path": [
+						"auth",
+						"realms",
+						"Demo-Realm",
+						"protocol",
+						"openid-connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Keycloak get access token for person who has both Admin and User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "springboot-microservice",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "b510efb2-151a-4c4b-b95e-188ff03aa687",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "employee3",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "mypassword",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:9081/auth/realms/Demo-Realm/protocol/openid-connect/token",
+					"host": [
+						"localhost"
+					],
+					"port": "9081",
+					"path": [
+						"auth",
+						"realms",
+						"Demo-Realm",
+						"protocol",
+						"openid-connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
