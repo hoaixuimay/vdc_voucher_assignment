@@ -36,13 +36,14 @@ And you will be received a SMS text message .
 
 **Limited: SMS text message is not implemented yet**
 
-Example:
+#### Example:
 
-Return voucher code when process time is short.
+**Return voucher code when process time is short < 30s.**
 ![](images/buy_voucher_in_1s.PNG)
 
-Return voucher code when process time is longer than 30s.
-Note that if process is running, when you get bought vouchers for this number. This buying voucher will not appear in result.
+
+**Return a waiting message when process time is longer than 30s.**
+Note that if process is running, when you get bought vouchers for this number. Then this buying voucher will not appear in result.
 This buying voucher will appear when process running finish. (Use getVouchers request to check when processing and when processed) 
 ![](images/buy_voucher_in_60s_process_time.PNG)
 
@@ -55,7 +56,7 @@ Note: this application designed that only **User** role has permission to get vo
 
 If you would like to see access_token information, pass it to https://jwt.io/ and see the result.
 
-Example:
+#### Example:
 User role: can access resource
 ![](images/get_access_token_for_user.PNG) ![](images/then_get_voucher_by_user.PNG)
 Admin role: will receive a forbidden message
