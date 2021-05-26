@@ -10,18 +10,18 @@
 #### Keycloak and Postgres on docker containers
 Ports will be used: 9081 (Keycloak), 8432 (Postgres)
 
-Goto folder vdc_voucher_assignment:
+Open new terminal and goto folder vdc_voucher_assignment then run:
 `docker-compose up`
 #### Run services in local
 Ports will be used: 8081 (voucher-service), 8082 (thirdparties-voucher-service)
 
-Goto folder voucher-service: `cd ./voucher-service`
+Open new terminal and goto folder voucher-service: `cd ./voucher-service`
 
 Run build: `./mvnw clean package`
 
 Run voucher-service service: `java -jar ./target/voucher-service-0.0.1-SNAPSHOT.jar`
 
-Goto folder thirdparties-voucher-service: `cd ./thirdparties-voucher-service`
+Open new terminal and goto folder thirdparties-voucher-service: `cd ./thirdparties-voucher-service`
 
 Run build: `./mvnw clean package`
 
@@ -50,7 +50,10 @@ This buying voucher will appear when process running finish. (Use getVouchers re
 ### Get vouchers by phone number
 Get access token first
 Then use access token to call request to get vouchers by phone number. (Authorization: Bearer <access_token>)
+
 Note: this application designed that only **User** role has permission to get vouchers
+
+If you would like to see access_token information, pass it to https://jwt.io/ and see the result.
 
 Example:
 User role: can access resource
