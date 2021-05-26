@@ -50,7 +50,9 @@ This buying voucher will appear when process running finish. (Use getVouchers re
 ### Get vouchers by phone number
 Get access token first
 Then use access token to call request to get vouchers by phone number. (Authorization: Bearer <access_token>)
+
 Note: this application designed that only **User** role has permission to get vouchers
+
 If you would like to see access_token information, pass it to https://jwt.io/ and see the result.
 
 Example:
