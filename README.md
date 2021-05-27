@@ -7,12 +7,23 @@
 - Free ports: 8081, 8082, 8432, 9081
 
 ## 2. Build and run application
-#### Keycloak and Postgres on docker containers
+### Keycloak and Postgres on docker containers
 Ports will be used: 9081 (Keycloak), 8432 (Postgres)
 
 Open new terminal and goto folder vdc_voucher_assignment then run:
 `docker-compose up`
-#### Run services in local
+
+#### Information of Keycloak when it's started (Dont do anything in here just for your information)
+Keycloak console admin: http://localhost:9081/auth
+
+User pass of admin: admin/admin
+
+Users and roles have been set up: 
+- **employee1** with role **user**
+- **employee2** with role **admin**
+- **employee3** with both roles **user** and **admin**
+
+### Run services in local
 Ports will be used: 8081 (voucher-service), 8082 (thirdparties-voucher-service)
 
 Open new terminal and goto folder voucher-service: `cd ./voucher-service`
